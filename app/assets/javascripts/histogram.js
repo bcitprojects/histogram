@@ -12,27 +12,27 @@ function histogramGenerator(){
 
   for(i = 0; i < grades.length; i++){
     if(grades[i] >= bounds[1].value){
-      document.getElementById('A+.').innerHTML += "O";
+      document.getElementById('A+.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[2].value){
-      document.getElementById('A.').innerHTML += "O";
+      document.getElementById('A.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] > bounds[3].value){
-      document.getElementById('A-.').innerHTML += "O";
+      document.getElementById('A-.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[4].value){
-      document.getElementById('B+.').innerHTML += "O";
+      document.getElementById('B+.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[5].value){
-      document.getElementById('B.').innerHTML += "O";
+      document.getElementById('B.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[6].value){
-      document.getElementById('B-.').innerHTML += "O";
+      document.getElementById('B-.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[7].value){
-      document.getElementById('C+.').innerHTML += "O";
+      document.getElementById('C+.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[8].value){
-      document.getElementById('C.').innerHTML += "O";
+      document.getElementById('C.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[9].value){
-      document.getElementById('C-.').innerHTML += "O";
+      document.getElementById('C-.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[10].value){
-      document.getElementById('D.').innerHTML += "O";
+      document.getElementById('D.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }else if (grades[i] >= bounds[11].value){
-      document.getElementById('F.').innerHTML += "O";
+      document.getElementById('F.').innerHTML += "<div class='glyphicon glyphicon-user'></div>";
     }
   }
 }
