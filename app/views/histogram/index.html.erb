@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ </head>
+
+ <body>
+
+   <div class="container">
+     <h1>Histogram Generator</h1>
+     <div class="left-div">
+       <p id="title"> Lower bounds </p>
+       <table>
+         <tr>
+           <td>
+             <label for="Max"> Max
+           </td>
+           <td>
+             <input type="text" value="100.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="A+"> A+
+           </td>
+           <td>
+             <input type="text" value="95.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="A"> A
+           </td>
+           <td>
+             <input type="text" value="90.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="A-"> A-
+           </td>
+           <td>
+             <input type="text" value="85.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="B+"> B+
+           </td>
+           <td>
+             <input type="text" value="80.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="B"> B
+           </td>
+           <td>
+             <input type="text" value="75.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="B-"> B-
+           </td>
+           <td>
+             <input type="text" value="70.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="C+"> C+
+           </td>
+           <td>
+             <input type="text" value="65.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="C"> C
+           </td>
+           <td>
+             <input type="text" value="60.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="C-"> C-
+           </td>
+           <td>
+             <input type="text" value="55.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="D"> D
+           </td>
+           <td>
+             <input type="text" value="50.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="F"> F
+           </td>
+           <td>
+             <input type="text" value="0.00" onkeyup="checkBounds()">
+           </td>
+         </tr>
+       </table>
+     </div>
+
+     <div class="right-div">
+       <p> Histogram </p>
+       <table class="histogramtable">
+         <tr>
+           <td>
+             <label for="A+"> A+
+           </td>
+           <td>
+             <label id="A+."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="A"> A
+           </td>
+           <td>
+             <label id="A."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="A-"> A-
+           </td>
+           <td>
+             <label id="A-."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="B+"> B+
+           </td>
+           <td>
+             <label id="B+."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="B"> B
+           </td>
+           <td>
+             <label id="B."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="B-"> B-
+           </td>
+           <td>
+             <label id="B-."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="C+"> C+
+           </td>
+           <td>
+             <label id="C+."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="C"> C
+           </td>
+           <td>
+             <label id="C."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="C-"> C-
+           </td>
+           <td>
+             <label id="C-."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="D"> D
+           </td>
+           <td>
+             <label id="D."> <label>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <label for="F"> F
+           </td>
+           <td>
+             <label id="F."> <label>
+           </td>
+         </tr>
+       </table>
+     </div>
+     </div>
+   </div>
+ </body>
+</html>

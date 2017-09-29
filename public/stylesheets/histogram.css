@@ -1,0 +1,60 @@
+h1 {
+  font-family: arial;
+}
+
+p {
+  color: #C9060C;
+}
+
+.container {
+    width: 80%;
+    height: 500px;
+}
+
+.left-div {
+  display: inline-block;
+  width: 50%;
+  background-color: #EAF1F3;
+  padding: 1px 10px 10px 10px;
+  margin-left: 20px;
+  border: 2px solid #D6E5EC;
+  border-radius: 5px;
+}
+
+.right-div {
+  display: inline-block;
+  width:300px;
+  background-color: #EAF1F3;
+  padding: 1px 10px 10px 10px;
+  border: 2px solid #D6E5EC;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.histogramtable tr {
+  height: 30px;
+}
+
+tr {
+  height: 50px;
+  text-align: left;
+}
+
+td {
+  width: 30%;
+}
+
+input {
+  padding-right: 5px;
+  text-align: right;
+  height: 20px;
+  width: 40%;
+}
+
+td input {
+  color: black;
+}
