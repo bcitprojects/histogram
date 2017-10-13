@@ -1,22 +1,9 @@
 // Place all the styles related to the Histogram controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
-  font-family: arial;
-}
 
-p {
-  color: #C9060C;
-}
-
-.container {
-    width: 80%;
-    height: 500px;
-}
-
-.left-div {
+#bounds {
   display: inline-block;
-  width: 50%;
   background-color: #EAF1F3;
   padding: 1px 10px 10px 10px;
   margin-left: 20px;
@@ -24,22 +11,36 @@ p {
   border-radius: 5px;
 }
 
-.right-div {
+#histogram {
   display: inline-block;
-  width:300px;
   background-color: #EAF1F3;
   padding: 1px 10px 10px 10px;
   border: 2px solid #D6E5EC;
   border-radius: 5px;
 }
 
-table {
-  width: 100%;
-  margin-left: 10px;
+#histogramTable tr {
+  height: 10px;
 }
 
-.histogramtable tr {
-  height: 30px;
+.container {
+  margin-top: 50px;
+}
+
+.error-message {
+  color:red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+
+#bounds h4, #histogram h4 {
+  color: red;
+}
+
+table td {
+    border-top: none !important;
 }
 
 tr {
@@ -58,6 +59,6 @@ input {
   width: 40%;
 }
 
-td input {
-  color: black;
+span {
+  height: 10px;
 }

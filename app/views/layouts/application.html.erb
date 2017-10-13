@@ -8,7 +8,20 @@
 </head>
 <body>
 
-<%= yield %>
+<header class="navbar navbar-fixed-top navbar-inverse navbar-center">
+  <nav>
+    <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "Students",   '/students' %></li>
+      <li><%= link_to "Courses",   '/courses' %></li>
+      <li><%= link_to "Enrollment",   '/enrollments' %></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <%= yield %>
+</div>
+
 
 </body>
 </html>

@@ -1,209 +1,76 @@
-<!DOCTYPE html>
-<html>
- <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- </head>
+<script type="text/javascript">
+  var grades = <%= Enrollment.where("course_id" => @course.id).pluck(:percentage).to_json %>;
 
- <body>
+  function postLetterGrades() {
+    <% Enrollment.where("course_id" => @course.id).to_a.each do |e| %>
+        var grade = getLetterGrade(<%= e.percentage %>);
+        console.log(grade);
+        $.ajax({
+                type: 'POST',
+                url: '/enrollments/update_lettergrades',
+                data: {
+                  enrollment: {
+                    id: <%= e.id %>,
+                    lettergrade: grade
+                  }
+                },
+                async:false
+              });
+    <% end %>
+  }
 
-   <div class="container">
-     <h1>Histogram Generator</h1>
-     <div class="left-div">
-       <p id="title"> Lower bounds </p>
-       <table>
-         <tr>
-           <td>
-             <label for="Max"> Max
-           </td>
-           <td>
-             <input type="text" value="100.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="A+"> A+
-           </td>
-           <td>
-             <input type="text" value="95.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="A"> A
-           </td>
-           <td>
-             <input type="text" value="90.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="A-"> A-
-           </td>
-           <td>
-             <input type="text" value="85.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="B+"> B+
-           </td>
-           <td>
-             <input type="text" value="80.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="B"> B
-           </td>
-           <td>
-             <input type="text" value="75.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="B-"> B-
-           </td>
-           <td>
-             <input type="text" value="70.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="C+"> C+
-           </td>
-           <td>
-             <input type="text" value="65.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="C"> C
-           </td>
-           <td>
-             <input type="text" value="60.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="C-"> C-
-           </td>
-           <td>
-             <input type="text" value="55.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="D"> D
-           </td>
-           <td>
-             <input type="text" value="50.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="F"> F
-           </td>
-           <td>
-             <input type="text" value="0.00" onkeyup="checkBounds()">
-           </td>
-         </tr>
-       </table>
-     </div>
+  checkBounds();
 
-     <div class="right-div">
-       <p> Histogram </p>
-       <table class="histogramtable">
-         <tr>
-           <td>
-             <label for="A+"> A+
-           </td>
-           <td>
-             <label id="A+."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="A"> A
-           </td>
-           <td>
-             <label id="A."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="A-"> A-
-           </td>
-           <td>
-             <label id="A-."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="B+"> B+
-           </td>
-           <td>
-             <label id="B+."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="B"> B
-           </td>
-           <td>
-             <label id="B."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="B-"> B-
-           </td>
-           <td>
-             <label id="B-."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="C+"> C+
-           </td>
-           <td>
-             <label id="C+."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="C"> C
-           </td>
-           <td>
-             <label id="C."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="C-"> C-
-           </td>
-           <td>
-             <label id="C-."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="D"> D
-           </td>
-           <td>
-             <label id="D."> <label>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <label for="F"> F
-           </td>
-           <td>
-             <label id="F."> <label>
-           </td>
-         </tr>
-       </table>
-     </div>
-     </div>
-   </div>
- </body>
-</html>
+</script>
+
+<% @boundLabels = [ 'Max', 'A+' , 'A' , 'A-',
+                    'B+' , 'B'  , 'B-', 'C+',
+                    'C'  , 'C-' , 'D']
+
+   @histLabels =  [ 'ap', 'a' , 'am' , 'bp',
+                    'b' , 'bm', 'cp' , 'c',
+                    'cm', 'd']
+%>
+
+
+<h1>Histogram Generator for <%= @course.name %> </h1>
+
+<div class="row">
+  <div id="bounds" class="col-xs-6">
+    <h4> Lower Bounds </h4>
+    <table class="table borderless">
+      <% num = 105.00
+        @boundLabels.each do |label| %>
+        <tr>
+          <td> <label for="<%= label %>"> <%= label %> </label> </td>
+          <td> <input name="<%= label %>" value="<%= num -= 5 %>" oninput="checkBounds()"></input>
+        </tr>
+      <% end %>
+      <tr>
+        <td> <label for="F">F</label> </td>
+        <td> <input name="F" value="0.00"></input>
+      </tr>
+    </table>
+    <p class="error-message" id="error"></p>
+  </div>
+  <div id="histogram" class="col-xs-4">
+    <h4> Histogram </h4>
+    <table id="histogramTable" class="table borderless">
+      <% i = 0
+        @histLabels.each do |label| %>
+        <tr>
+          <td> <span> <%= @boundLabels[i += 1] %> </span> </td>
+          <td> <span id="<%= label %>"> </span>
+        </tr>
+      <% end %>
+      <tr>
+        <td> <span>F</span> </td>
+        <td> <span id="f"> </span>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="btn btn-primary">
+	<%=link_to 'Submit', course_path(@course), onclick: "postLetterGrades()"%>
+</div>

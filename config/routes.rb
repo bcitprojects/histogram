@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :widgets
+  resources :enrollments
+  resources :courses
+  resources :students
 
   get '/histogram' => 'histogram#index'
+  get '/histogram/:id' => 'histogram#course'
+
+  post '/enrollments/update_lettergrades' => 'enrollments#update_lettergrades'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
