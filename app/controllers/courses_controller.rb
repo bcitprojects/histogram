@@ -14,6 +14,11 @@ class CoursesController < ApplicationController
     @enrollments = Enrollment.where("course_id" => params[:id])
   end
 
+  # GET /courses/details/1
+  def details
+    @course = Course.find(params[:id])
+  end
+
   # GET /courses/new
   def new
     @course = Course.new
@@ -30,7 +35,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to action: "details", id: @course.id, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -44,7 +49,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to action: "details", id: @course.id, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -56,6 +61,10 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
+
+    # DELETE ALL ENROLLMENTS AS WELL
+    Enrollment.where("course_id" => @course.id).destroy_all
+    
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
@@ -71,6 +80,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:course_id, :description)
+      params.require(:course).permit(:course_id, :name, :description)
     end
 end
