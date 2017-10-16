@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :courses
   resources :students
 
+  get '/courses/details/:id', to: 'courses#details', as: 'details_course'
+
   get '/histogram' => 'histogram#index'
   get '/histogram/:id' => 'histogram#course'
 
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'welcome#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
