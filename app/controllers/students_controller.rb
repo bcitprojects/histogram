@@ -54,6 +54,10 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
+
+    # DELETE ALL ENROLLMENTS ASSOCIATED AS WELL
+    Enrollment.where("student_id" => @student.id).destroy_all
+
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
